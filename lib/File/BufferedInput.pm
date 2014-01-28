@@ -12,7 +12,7 @@ use Carp;
 use strict;
 use warnings;
 
-our $VERSION = '1.0';
+our $VERSION = '1.01';
 #==========================================================
 sub new {
 my ($class, %args) = @_;
@@ -59,6 +59,11 @@ sub rewind {
 my ($self) = $_[0];
 	seek $self->{fh}, 0, 0;
 	$self->reset();
+}
+#=========================================================#
+sub eof {
+my ($self) = $_[0];
+	$self->{eof};
 }
 #=========================================================#
 sub DESTROY {
