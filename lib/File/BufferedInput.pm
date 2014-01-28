@@ -12,7 +12,7 @@ use Carp;
 use strict;
 use warnings;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 #==========================================================
 sub new {
 my ($class, %args) = @_;
@@ -163,7 +163,9 @@ File::BufferedInput - Large and giant text file performance buffered reader.
 	# now loop through all the text file lines straight forward
 	
 	my $counter = 0;
-	while (my $line = $fileobj->line()) {#loop through the file lines sequentially
+	# loop through the file lines sequentially
+	while (!$file->eof()) {
+		 $line=$file->line();
 		$counter++;
 		# print "$counter)- $line\n";
 	}
